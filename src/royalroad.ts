@@ -127,7 +127,12 @@ export class Requester {
 
             req.headers = Requester.headers;
 
-            request(req, (err, res, body) => {
+            const requestObject = request(req, (err, res, body) => {
+
+                if(err) {
+                    return reject(new RoyalError(err.message || err));
+                }
+
                 this.debug('%o < %o (%o)',
                     req.method || 'GET', res.statusCode, res.statusMessage);
 
@@ -150,6 +155,13 @@ export class Requester {
 
                 resolve(body);
             });
+
+            requestObject.on('socket', function(socket) {
+                socket.on('error', function (error) {
+                  reject(error);
+                  requestObject.abort();
+                });
+              });
         });
     }
 
