@@ -1,7 +1,7 @@
 An unofficial API for [royalroadl.com](https://royalroadl.com), written in TypeScript.
 
 ```
-npm i -s @l1lly/royalroadl-api
+npm i -s @mh1024/royalroadl-api
 ```
 
 This is an attempt to write a predictable and consistent wrapper around the  mess that is RRL. Since no official public API is exposed, this module scrapes all data straight from the HTML, which makes it very prone to spontaneous and horrible death.
@@ -15,7 +15,7 @@ A more elaborate description of this package and its functionality (both interna
 For more examples check out the `/examples` directory.
 
 ```javascript
-const { RoyalRoadAPI } = require('@l1lly/royalroadl-api');
+const { RoyalRoadAPI } = require('@mh1024/royalroadl-api');
 
 const api = new RoyalRoadAPI();
 
